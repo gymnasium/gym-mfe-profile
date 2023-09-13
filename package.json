@@ -12,6 +12,7 @@
     "build": "fedx-scripts webpack",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
     "lint": "fedx-scripts eslint --ext .js --ext .jsx .",
+    "prepare": "make build",
     "snapshot": "fedx-scripts jest --updateSnapshot",
     "start": "fedx-scripts webpack-dev-server --progress",
     "test": "TZ=UTC fedx-scripts jest --coverage --passWithNoTests",
@@ -30,7 +31,7 @@
   "dependencies": {
     "@edx/brand": "npm:@edx/brand-openedx@1.2.0",
     "@edx/frontend-component-footer": "12.2.1",
-    "@edx/frontend-component-header": "4.6.0",
+    "@edx/frontend-component-header": "gymnasium/frontend-component-header#gym",
     "@edx/frontend-platform": "5.3.2",
     "@edx/paragon": "^20.44.0",
     "@fortawesome/fontawesome-svg-core": "1.2.36",

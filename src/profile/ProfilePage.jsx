@@ -291,7 +291,7 @@ class ProfilePage extends React.Component {
 
   render() {
     return (
-      <div className="profile-page">
+      <div className="gym-profile-page profile-page">
         <Banner />
         {this.renderContent()}
       </div>
