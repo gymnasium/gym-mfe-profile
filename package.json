@@ -1,12 +1,12 @@
 {
   "name": "@edx/frontend-app-profile",
-  "version": "1.0.0-semantically-released",
-  "description": "User profile micro-frontend for Open edX",
+  "version": "1.0.0-gym.palm.4",
+  "description": "User profile MFE",
   "author": "edX",
   "license": "AGPL-3.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/openedx/frontend-app-profile.git"
+    "url": "git+https://github.com/gymnasium/frontend-app-profile.git"
   },
   "scripts": {
     "build": "fedx-scripts webpack",
@@ -29,7 +29,7 @@
   "dependencies": {
     "@edx/brand": "npm:@edx/brand-openedx@1.2.0",
     "@edx/frontend-component-footer": "12.0.0",
-    "@edx/frontend-component-header": "4.0.0",
+    "@edx/frontend-component-header": "github:gymnasium/frontend-component-header#gym.palm.4",
     "@edx/frontend-platform": "4.2.0",
     "@edx/paragon": "^20.20.0",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
