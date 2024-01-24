@@ -12,9 +12,8 @@
     "build": "fedx-scripts webpack",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
     "lint": "fedx-scripts eslint --ext .js --ext .jsx .",
-    "snapshot": "fedx-scripts jest --updateSnapshot",
-    "start": "fedx-scripts webpack-dev-server --progress",
-    "test": "TZ=UTC fedx-scripts jest --coverage --passWithNoTests"
+    "prepare": "npm run build",
+    "start": "fedx-scripts webpack-dev-server --progress"
   },
   "bugs": {
     "url": "https://github.com/openedx/frontend-app-profile/issues"
@@ -27,9 +26,6 @@
     "extends @edx/browserslist-config"
   ],
   "dependencies": {
-    "@openedx/brand-openedx": "github:gymnasium/brand-openedx#gym.palm.4",
-    "@edx/frontend-component-footer": "github:gymnasium/frontend-component-footer#gym.palm.4",
-    "@edx/frontend-component-header": "github:gymnasium/frontend-component-header#gym.palm.4",
     "@edx/frontend-platform": "4.2.0",
     "@edx/paragon": "20.46.3",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
@@ -37,6 +33,7 @@
     "@fortawesome/free-regular-svg-icons": "5.15.4",
     "@fortawesome/free-solid-svg-icons": "5.15.4",
     "@fortawesome/react-fontawesome": "0.2.0",
+    "@openedx/brand-openedx": "github:gymnasium/brand-openedx#gym.palm.4",
     "classnames": "2.3.2",
     "core-js": "3.27.2",
     "history": "4.10.1",
@@ -58,13 +55,14 @@
     "redux-thunk": "2.4.2",
     "regenerator-runtime": "0.13.11",
     "reselect": "4.1.7",
+    "sharp": "^0.33.2",
     "universal-cookie": "4.0.4"
   },
   "devDependencies": {
     "@commitlint/cli": "17.5.1",
     "@commitlint/config-angular": "17.4.4",
     "@edx/browserslist-config": "1.2.0",
-    "@edx/frontend-build": "npm:@openedx/frontend-build@13.0.24",
+    "@edx/frontend-build": "npm:@edx/frontend-build@12.8.67",
     "@edx/reactifex": "2.1.1",
     "@testing-library/react": "11.2.7",
     "codecov": "3.8.3",

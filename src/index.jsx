@@ -4,6 +4,7 @@ import 'regenerator-runtime/runtime';
 import {
   APP_INIT_ERROR,
   APP_READY,
+  getConfig,
   initialize,
   mergeConfig,
   subscribe,
@@ -15,27 +16,41 @@ import {
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import Header, { messages as headerMessages } from '@edx/frontend-component-header';
-import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
+import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { Helmet } from 'react-helmet';
 
 import appMessages from './i18n';
 import configureStore from './data/configureStore';
 
 import './index.scss';
-import Head from './head/Head';
+import messages from './head/messages';
+
+
+import GymSettings, { GymFooter, GymHeader } from './gym-frontend-components';
+const timestamp = Date.now();
+const settings = await GymSettings;
+const root = settings.urls.root; // should be same as marketing URL
+const config = getConfig();
+const css = `${root}${settings.css.mfe}?${timestamp}`;
+const title = `Profile | ${getConfig().SITE_NAME}`;
 
 import AppRoutes from './routes/AppRoutes';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={configureStore()}>
-      <Head />
-      <Header />
+      <Helmet>
+        <title>Profile</title>
+        <link rel="shortcut icon" href={getConfig().FAVICON_URL} type="image/x-icon" />
+        <link rel="stylesheet" href={css} />
+      </Helmet>
+      <GymHeader secondaryNav="account" />
       <main>
-        <AppRoutes />
+        <div className="container">
+          <AppRoutes />
+        </div>
       </main>
-      <Footer />
+      <GymFooter />
     </AppProvider>,
     document.getElementById('root'),
   );
@@ -47,16 +62,14 @@ subscribe(APP_INIT_ERROR, (error) => {
 
 initialize({
   messages: [
-    appMessages,
-    headerMessages,
-    footerMessages,
+    appMessages
   ],
   hydrateAuthenticatedUser: true,
   handlers: {
     config: () => {
       mergeConfig({
-        COLLECT_YEAR_OF_BIRTH: process.env.COLLECT_YEAR_OF_BIRTH,
-        ENABLE_SKILLS_BUILDER_PROFILE: process.env.ENABLE_SKILLS_BUILDER_PROFILE,
+        COLLECT_YEAR_OF_BIRTH: process.env.COLLECT_YEAR_OF_BIRTH | false,
+        ENABLE_SKILLS_BUILDER_PROFILE: process.env.ENABLE_SKILLS_BUILDER_PROFILE | false,
       }, 'App loadConfig override handler');
     },
   },
