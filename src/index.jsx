@@ -4,6 +4,7 @@ import 'regenerator-runtime/runtime';
 import {
   APP_INIT_ERROR,
   APP_READY,
+  getConfig,
   initialize,
   mergeConfig,
   subscribe,
@@ -16,26 +17,37 @@ import {
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Header from '@edx/frontend-component-header';
-import Footer from '@edx/frontend-component-footer';
+import { Helmet } from 'react-helmet';
 
 import messages from './i18n';
 import configureStore from './data/configureStore';
 
 import './index.scss';
-import Head from './head/Head';
 
 import AppRoutes from './routes/AppRoutes';
+
+import GymSettings, { GymFooter, GymHeader } from '@edx/gym-frontend';
+
+const config = getConfig();
+const timestamp = Date.now();
+const settings = await GymSettings;
+const root = settings.urls.root; // should be same as marketing URL
+const css = `${root}${settings.css.mfe}?${timestamp}`;
+const title = `Profile | ${config.SITE_NAME}`;
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={configureStore()}>
-      <Head />
-      <Header />
-      <main>
+      <Helmet>
+        <title>{title}</title>
+        <link rel="shortcut icon" href={config.FAVICON_URL} type="image/x-icon" />
+        <link rel="stylesheet" href={css} />
+      </Helmet>
+      <GymHeader secondaryNav="dashboard" activeLink="profile" />
+      <main><div className="container">
         <AppRoutes />
-      </main>
-      <Footer />
+      </div></main>
+      <GymFooter />
     </AppProvider>,
     document.getElementById('root'),
   );
