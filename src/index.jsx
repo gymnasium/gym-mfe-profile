@@ -16,8 +16,7 @@ import {
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Header from '@edx/frontend-component-header';
-import Footer from '@edx/frontend-component-footer';
+import { GymFooter, GymHeader } from '@edx/gym-frontend';
 
 import messages from './i18n';
 import configureStore from './data/configureStore';
@@ -31,11 +30,13 @@ subscribe(APP_READY, () => {
   ReactDOM.render(
     <AppProvider store={configureStore()}>
       <Head />
-      <Header />
+      <GymHeader secondaryNav="dashboard" />
       <main id="main">
-        <AppRoutes />
+        <div className="container">
+          <AppRoutes />
+        </div>
       </main>
-      <Footer />
+      <GymFooter />
     </AppProvider>,
     document.getElementById('root'),
   );
