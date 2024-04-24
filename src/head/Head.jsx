@@ -10,7 +10,7 @@ import messages from './messages';
 const getBaseUrl = () => getConfig().MARKETING_SITE_BASE_URL;
 const getSiteName = () => getConfig().SITE_NAME;
 const getFaviconUrl = () => getConfig().FAVICON_URL;
-const getStyles = () => `${getBaseUrl()}/css/mfe.css?${timestamp}`;
+const getStyles = () => `${getBaseUrl()}/css/mfe-profile.css?${timestamp}`;
 
 const Head = ({ intl }) => (
   <Helmet>

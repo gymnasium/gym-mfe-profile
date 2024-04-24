@@ -1,7 +1,7 @@
 {
   "name": "@edx/frontend-app-profile",
-  "version": "1.0.0-semantically-released",
-  "description": "User profile micro-frontend for Open edX",
+  "version": "1.0.0-gym.quince.3",
+  "description": "Gymnasium-specific user profile MFE",
   "author": "edX",
   "license": "AGPL-3.0",
   "repository": {
