@@ -32,7 +32,7 @@
     "@edx/frontend-component-footer": "12.3.0",
     "@edx/frontend-component-header": "4.7.1",
     "@edx/frontend-platform": "5.5.4",
-    "@edx/gym-frontend": "git+https://git@github.com/gymnasium/gym-frontend-components.git#gym.quince.2",
+    "@edx/gym-frontend": "git+https://git@github.com/gymnasium/gym-frontend-components.git#main",
     "@edx/paragon": "^20.44.0",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-brands-svg-icons": "5.15.4",
