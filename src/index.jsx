@@ -8,36 +8,21 @@ import {
   mergeConfig,
   subscribe,
 } from '@edx/frontend-platform';
-import {
-  AppProvider,
+
+import { 
   ErrorPage,
 } from '@edx/frontend-platform/react';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { GymFooter, GymHeader } from '@edx/gym-frontend';
-
 import messages from './i18n';
-import configureStore from './data/configureStore';
 
-import './GymApp.scss';
-import Head from './head/Head';
-
-import AppRoutes from './routes/AppRoutes';
+import GymApp from './GymApp';
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
-    <AppProvider store={configureStore()}>
-      <Head />
-      <GymHeader secondaryNav="dashboard" />
-      <main id="main">
-        <div className="container">
-          <AppRoutes />
-        </div>
-      </main>
-      <GymFooter />
-    </AppProvider>,
+    <GymApp />,
     document.getElementById('root'),
   );
 });
