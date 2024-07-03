@@ -21,7 +21,7 @@ import { GymFooter, GymHeader } from '@edx/gym-frontend';
 import messages from './i18n';
 import configureStore from './data/configureStore';
 
-import './index.scss';
+import './GymApp.scss';
 import Head from './head/Head';
 
 import AppRoutes from './routes/AppRoutes';
