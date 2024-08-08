@@ -47,7 +47,7 @@
 
 .profile-page {
   .edit-section-header {
-    @extend .h6;
+    @extend .h6 !optional;
     display: block;
     font-weight: normal;
     letter-spacing: 0;
