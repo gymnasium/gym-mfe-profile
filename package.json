@@ -1,6 +1,6 @@
 {
   "name": "@edx/frontend-app-profile",
-  "version": "1.0.0-gym.redwood",
+  "version": "1.0.1-gym.redwood",
   "description": "Gymnasium-specific user profile micro-frontend for Open edX",
   "author": "edX",
   "license": "AGPL-3.0",
@@ -36,6 +36,7 @@
     "@fortawesome/free-regular-svg-icons": "6.5.2",
     "@fortawesome/free-solid-svg-icons": "6.5.2",
     "@fortawesome/react-fontawesome": "0.2.0",
+    "@intercom/messenger-js-sdk": "^0.0.14",
     "@openedx/gym-frontend": "git+https://git@github.com/gymnasium/gym-frontend-components.git#main",
     "@openedx/paragon": "^22.2.2",
     "@pact-foundation/pact": "^11.0.2",
