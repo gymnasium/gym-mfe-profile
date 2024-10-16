@@ -4,6 +4,7 @@ import 'regenerator-runtime/runtime';
 import {
   APP_INIT_ERROR,
   APP_READY,
+  getConfig,
   initialize,
   mergeConfig,
   subscribe,
@@ -12,6 +13,7 @@ import {
   AppProvider,
   ErrorPage,
 } from '@edx/frontend-platform/react';
+import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -26,7 +28,26 @@ import Head from './head/Head';
 
 import AppRoutes from './routes/AppRoutes';
 
+import {Intercom, boot, update } from "@intercom/messenger-js-sdk";
+
+const INTERCOM_APP_ID = () => getConfig().INTERCOM_APP_ID;
+
 subscribe(APP_READY, () => {
+  if (INTERCOM_APP_ID()) {
+    try {
+      Intercom({app_id: INTERCOM_APP_ID()});
+
+      const INTERCOM_SETTINGS = {
+        email: getAuthenticatedUser().email,
+        user_id: getAuthenticatedUser().username,
+      }
+    
+      update(INTERCOM_SETTINGS);
+    } catch (error) {
+      logError(error);
+    }
+  }
+
   ReactDOM.render(
     <AppProvider store={configureStore()}>
       <Head />
